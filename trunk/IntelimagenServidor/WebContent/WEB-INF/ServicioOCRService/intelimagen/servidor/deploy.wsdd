@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Use this file to deploy some handlers/chains and services      --><!-- Two ways to do this:                                           --><!--   java org.apache.axis.client.AdminClient deploy.wsdd          --><!--      after the axis server is running                          --><!-- or                                                             --><!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   --><!--      from the same directory that the Axis engine runs         --><deployment xmlns="http://xml.apache.org/axis/wsdd/" xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ServicioOCRService WSDL service -->
+
+  <service name="ServicioOCR" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://servidor.intelimagen"/>
+      <parameter name="wsdlServiceElement" value="ServicioOCRService"/>
+      <parameter name="schemaQualified" value="http://servidor.intelimagen"/>
+      <parameter name="wsdlServicePort" value="ServicioOCR"/>
+      <parameter name="className" value="intelimagen.servidor.ServicioOCR"/>
+      <parameter name="wsdlPortType" value="ServicioOCR"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation xmlns:operNS="http://servidor.intelimagen" xmlns:retNS="http://servidor.intelimagen" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="test" qname="operNS:test" returnQName="retNS:testReturn" returnType="rtns:boolean" soapAction="">
+        <parameter xmlns:pns="http://servidor.intelimagen" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:serial" type="tns:string"/>
+      </operation>
+      <operation xmlns:operNS="http://servidor.intelimagen" xmlns:retNS="http://servidor.intelimagen" xmlns:rtns="http://www.w3.org/2001/XMLSchema" name="reconocerImagen" qname="operNS:reconocerImagen" returnQName="retNS:reconocerImagenReturn" returnType="rtns:string" soapAction="">
+        <parameter xmlns:pns="http://servidor.intelimagen" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:imagen" type="tns:string"/>
+        <parameter xmlns:pns="http://servidor.intelimagen" xmlns:tns="http://www.w3.org/2001/XMLSchema" qname="pns:serial" type="tns:string"/>
+      </operation>
+      <parameter name="allowedMethods" value="reconocerImagen test"/>
+
+  </service>
+</deployment>
