@@ -8,13 +8,22 @@
 package intelimagen.servidor;
 
 import java.awt.image.BufferedImage;
+import java.awt.image.Raster;
 import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+
 import javax.imageio.ImageIO;
+
+import com.sun.media.jai.codec.ImageCodec;
+import com.sun.media.jai.codec.ImageDecoder;
+import com.sun.media.jai.codec.TIFFDecodeParam;
 import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
 
 /**
@@ -50,6 +59,14 @@ public class Utilidades {
 		return result;
 	}
 
+	public static boolean eliminarArchivo(File tmp) {
+		boolean result = false;
+		if (tmp.exists()) {
+			result = tmp.delete();
+		}
+		return result;
+	}
+
 	/**
 	 * Almacena una el contenido de una imagen en disco
 	 * 
@@ -57,18 +74,55 @@ public class Utilidades {
 	 *            Contenido de la imagen
 	 * @param imgTemp
 	 *            Archivo donde se almacena la imagen
-	 * @param formato
-	 *            Tipo de formato de la imagen
 	 * @return
 	 */
-	public static boolean guardarImagen(String imagen, File imgTemp,
-			String formato) {
+	public static boolean guardarImagenPBM(String imagen, File imgTemp) {
+		boolean result = false;
+		try {
+			InputStream entrada = new ByteArrayInputStream(
+					Base64.decode(imagen));
+			TIFFDecodeParam param = new TIFFDecodeParam();
+			ImageDecoder decTiff = ImageCodec.createImageDecoder("TIFF",
+					entrada, param);
+			entrada.close();
+			Raster imgInfo = decTiff.decodeAsRaster();
+			OutputStream salida = new FileOutputStream(imgTemp);
+			salida.write("P1\n".getBytes());
+			salida.write((imgInfo.getWidth() + " " + imgInfo.getHeight() + "\n")
+					.getBytes());
+			for (int height = 0; height < imgInfo.getHeight(); height++) {
+				for (int width = 0; width < imgInfo.getWidth(); width++) {
+					int[] pixel = null;
+					pixel = imgInfo.getPixel(width, height, pixel);
+					salida.write(((((int) pixel[0]) == 1 ? 1 : 0) + " ")
+							.getBytes());
+				}
+				salida.write('\n');
+			}
+			salida.close();
+			result = imgTemp.exists();
+		} catch (Exception ex) {
+			result = false;
+		}
+		return result;
+	}
+
+	/**
+	 * Almacena una el contenido de una imagen en disco
+	 * 
+	 * @param imagen
+	 *            Contenido de la imagen
+	 * @param imgTemp
+	 *            Archivo donde se almacena la imagen
+	 * @return
+	 */
+	public static boolean guardarImagenTIFF(String imagen, File imgTemp) {
 		boolean result = false;
 		try {
 			byte[] bytearray = Base64.decode(imagen);
-			BufferedImage img = ImageIO
-					.read(new ByteArrayInputStream(bytearray));
-			result = ImageIO.write(img, formato, imgTemp);
+			BufferedImage img;
+			img = ImageIO.read(new ByteArrayInputStream(bytearray));
+			result = ImageIO.write(img, "TIFF", imgTemp);
 		} catch (Exception ex) {
 			result = false;
 		}
@@ -92,14 +146,6 @@ public class Utilidades {
 			reader.close();
 		} catch (IOException e) {
 			result = "";
-		}
-		return result;
-	}
-
-	public static boolean eliminarArchivo(File tmp) {
-		boolean result = false;
-		if (tmp.exists()) {
-			result = tmp.delete();
 		}
 		return result;
 	}
