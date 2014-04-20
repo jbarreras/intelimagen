@@ -19,7 +19,7 @@ import java.util.UUID;
  * @updated 29-mar.-2014 6:03:53 p. m.
  */
 public class TesseractOCR implements IOCR {
-	private final String ejecutable = "C:\\Program Files (x86)\\Tesseract-OCR\\tesseract.exe";
+	private final String ejecutable = "C:\\Program Files (x86)\\Tesseract-OCR\\tesseract.exe {0} {1} -l spa";
 
 	/*
 	 * (non-Javadoc)
@@ -32,10 +32,9 @@ public class TesseractOCR implements IOCR {
 		UUID tmp = UUID.randomUUID();
 		try {
 			File imgTemp = File.createTempFile(tmp.toString(), ".tiff");
-			if (Utilidades.guardarImagen(imagen, imgTemp, "tiff")) {
-				if (Utilidades.ejecutarProceso(ejecutable + " "
-						+ imgTemp.getAbsolutePath() + " "
-						+ imgTemp.getAbsolutePath() + " -l spa ")) {
+			if (Utilidades.guardarImagenTIFF(imagen, imgTemp)) {
+				if (Utilidades.ejecutarProceso(String.format(ejecutable,
+						imgTemp.getAbsolutePath(), imgTemp.getAbsolutePath()))) {
 					File txtTemp = new File(imgTemp + ".txt");
 					ocrResult = Utilidades.leerArchivoPlano(txtTemp);
 					if (ocrResult.length() > 0) {

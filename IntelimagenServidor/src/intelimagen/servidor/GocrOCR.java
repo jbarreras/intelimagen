@@ -34,15 +34,15 @@ public class GocrOCR implements IOCR {
 		UUID tmp = UUID.randomUUID();
 		try {
 			File imgTemp = File.createTempFile(tmp.toString(), ".pbm");
-			if (Utilidades.guardarImagen(imagen, imgTemp, "pbm")) {
+			if (Utilidades.guardarImagenPBM(imagen, imgTemp)) {
 				if (Utilidades.ejecutarProceso(ejecutable + " -i "
 						+ imgTemp.getAbsolutePath() + " -o "
 						+ imgTemp.getAbsolutePath() + ".txt")) {
 					File txtTemp = new File(imgTemp + ".txt");
 					ocrResult = Utilidades.leerArchivoPlano(txtTemp);
 					if (ocrResult.length() > 0) {
-						Utilidades.eliminarArchivo(txtTemp);
-						Utilidades.eliminarArchivo(imgTemp);
+						// Utilidades.eliminarArchivo(txtTemp);
+						// Utilidades.eliminarArchivo(imgTemp);
 					} else {
 						ocrResult = "Servidor: No hay resultados del proceso "
 								+ ejecutable;

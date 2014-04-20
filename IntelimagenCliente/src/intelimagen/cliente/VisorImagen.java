@@ -261,7 +261,10 @@ public class VisorImagen extends JApplet {
 
 				try {
 					entrada = new String(ctrlImg.obtenerSeccion());
-					resultado = wsOCR.reconocerImagen(entrada, "test");
+					// 936DA01F-9ABD-4d9d-80C7-02AF85C822A8
+					// F9168C5E-CEB2-4faa-B6BF-329BF39FA1E4
+					resultado = wsOCR.reconocerImagen(entrada,
+							"F9168C5E-CEB2-4faa-B6BF-329BF39FA1E4");
 				} catch (Exception ex) {
 					resultado = ex.getMessage();
 				}
