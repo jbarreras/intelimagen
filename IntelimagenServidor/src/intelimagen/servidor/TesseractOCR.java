@@ -19,7 +19,7 @@ import java.util.UUID;
  * @updated 29-mar.-2014 6:03:53 p. m.
  */
 public class TesseractOCR implements IOCR {
-	private final String ejecutable = "C:\\Program Files (x86)\\Tesseract-OCR\\tesseract.exe {0} {1} -l spa";
+	private final String ejecutable = "C:\\Program Files (x86)\\Tesseract-OCR\\tesseract.exe %s %s -l spa";
 
 	/*
 	 * (non-Javadoc)

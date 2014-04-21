@@ -24,22 +24,21 @@ public class ServicioOCR {
 	 *            Cadena de caracteres con bytes de la imagen a reconocer
 	 * @param serial
 	 *            Cadena que contiene la llave para la autorización al servicio
-	 *            936DA01F-9ABD-4d9d-80C7-02AF85C822A8
-	 *            F9168C5E-CEB2-4faa-B6BF-329BF39FA1E4
+	 *            TESSERACT GOCR
 	 * 
 	 * @return Texto reconocido
 	 */
 	public String reconocerImagen(String imagen, String serial) {
 		IOCR OCR = null;
 		switch (serial) {
-		case "936DA01F-9ABD-4d9d-80C7-02AF85C822A8":
+		case "TESSERACT":
 			OCR = new TesseractOCR();
 			break;
-		case "F9168C5E-CEB2-4faa-B6BF-329BF39FA1E4":
+		case "GOCR":
 			OCR = new GocrOCR();
 			break;
 		}
-		return OCR.reconocerImagen(imagen);
+		return Utilidades.CadenaBase64(OCR.reconocerImagen(imagen));
 	}
 
 	/**
@@ -50,7 +49,9 @@ public class ServicioOCR {
 	 * 
 	 * @return Servicio en linea
 	 */
-	public Boolean test(String serial) {
-		return true;
+	public boolean test(String serial) {
+		boolean result = ((serial.equals("TESSERACT")) || (serial
+				.equals("GOCR")));
+		return result;
 	}
 }
