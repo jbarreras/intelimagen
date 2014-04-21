@@ -119,9 +119,9 @@ public class Utilidades {
 	public static boolean guardarImagenTIFF(String imagen, File imgTemp) {
 		boolean result = false;
 		try {
-			byte[] bytearray = Base64.decode(imagen);
+			byte[] bytes = Base64.decode(imagen);
 			BufferedImage img;
-			img = ImageIO.read(new ByteArrayInputStream(bytearray));
+			img = ImageIO.read(new ByteArrayInputStream(bytes));
 			result = ImageIO.write(img, "TIFF", imgTemp);
 		} catch (Exception ex) {
 			result = false;
@@ -148,5 +148,15 @@ public class Utilidades {
 			result = "";
 		}
 		return result;
+	}
+
+	/**
+	 * Codifica en Base64 una cadena de texto
+	 * 
+	 * @param cadena
+	 * @return Cadena codificada
+	 */
+	public static String CadenaBase64(String cadena) {
+		return Base64.encode(cadena.getBytes());
 	}
 }

@@ -21,7 +21,7 @@ import java.util.UUID;
  */
 public class GocrOCR implements IOCR {
 
-	private final String ejecutable = "C:\\Program Files (x86)\\GOCR\\gocr.exe";
+	private final String ejecutable = "C:\\Program Files (x86)\\GOCR\\gocr.exe -i %s -o %s -u \" \" -a 70 -f \"UTF8\" -C \"a-z, A-Z, 0-9\"";
 
 	/*
 	 * (non-Javadoc)
@@ -35,14 +35,14 @@ public class GocrOCR implements IOCR {
 		try {
 			File imgTemp = File.createTempFile(tmp.toString(), ".pbm");
 			if (Utilidades.guardarImagenPBM(imagen, imgTemp)) {
-				if (Utilidades.ejecutarProceso(ejecutable + " -i "
-						+ imgTemp.getAbsolutePath() + " -o "
-						+ imgTemp.getAbsolutePath() + ".txt")) {
+				if (Utilidades.ejecutarProceso(String.format(ejecutable,
+						imgTemp.getAbsolutePath(), imgTemp.getAbsolutePath()
+								+ ".txt"))) {
 					File txtTemp = new File(imgTemp + ".txt");
 					ocrResult = Utilidades.leerArchivoPlano(txtTemp);
 					if (ocrResult.length() > 0) {
-						// Utilidades.eliminarArchivo(txtTemp);
-						// Utilidades.eliminarArchivo(imgTemp);
+						Utilidades.eliminarArchivo(txtTemp);
+						Utilidades.eliminarArchivo(imgTemp);
 					} else {
 						ocrResult = "Servidor: No hay resultados del proceso "
 								+ ejecutable;
