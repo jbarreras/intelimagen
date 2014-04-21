@@ -5,7 +5,6 @@
  *
  * This software is provided "AS IS," without a warranty of any kind.
  */
-
 package intelimagen.cliente;
 
 import java.awt.BasicStroke;
@@ -27,14 +26,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-
 import javax.imageio.ImageIO;
 import javax.media.jai.InterpolationBilinear;
 import javax.media.jai.InterpolationNearest;
 import javax.media.jai.JAI;
 import javax.media.jai.RenderedOp;
 import javax.swing.JOptionPane;
-
 import com.sun.media.jai.codec.ImageCodec;
 import com.sun.media.jai.codec.ImageDecoder;
 import com.sun.media.jai.widget.DisplayJAI;
@@ -51,7 +48,6 @@ import com.sun.org.apache.xerces.internal.impl.dv.util.Base64;
  */
 @SuppressWarnings("serial")
 public class ControlImagen extends DisplayJAI {
-
 	private int alto = 0;
 	private int ancho = 0;
 	private boolean imagen = false;
@@ -75,6 +71,7 @@ public class ControlImagen extends DisplayJAI {
 	 * @param padre
 	 *            Control de jerarquía superior que utiliza la visualización de
 	 *            imágenes
+	 * @wbp.parser.constructor
 	 */
 	public ControlImagen(Component padre) {
 		inicializar(padre);
@@ -103,7 +100,6 @@ public class ControlImagen extends DisplayJAI {
 	public void aplicarRotacion(int angulo) {
 		try {
 			if (imagen) {
-
 				this.rotacion += (angulo);
 				ParameterBlock params = new ParameterBlock();
 				params.addSource(imgDecoder.decodeAsRenderedImage(pagina - 1));
@@ -130,13 +126,10 @@ public class ControlImagen extends DisplayJAI {
 	 *            Nivel de escala que se requiere aplicar a la imagen
 	 */
 	public void aplicarZoom(int escala) {
-
 		try {
 			if (imagen) {
 				if ((this.zoom + (escala)) > 0) {
-
 					this.zoom += (escala);
-
 					ParameterBlock params = new ParameterBlock();
 					params.addSource(imgDecoder
 							.decodeAsRenderedImage(pagina - 1));
@@ -145,7 +138,6 @@ public class ControlImagen extends DisplayJAI {
 					params.add(0.0F);
 					params.add(0.0F);
 					params.add(new InterpolationNearest());
-
 					set(JAI.create("scale", params));
 					repaint();
 				}
@@ -234,16 +226,12 @@ public class ControlImagen extends DisplayJAI {
 					mostrarMensaje("Se presentó un problema cargando la imagen");
 				}
 			}
-
 			this.seleccion = true;
 			this.imagen = true;
-
 			imgDecoder = ImageCodec.createImageDecoder("tiff", stream, null);
 			ultimaPagina = imgDecoder.getNumPages();
 			set(imgDecoder.decodeAsRenderedImage(pagina - 1));
-
 			repaint();
-
 		} catch (IOException ex3) {
 			mostrarMensaje("Se presentó un problema cargando la imagen");
 		}
@@ -267,7 +255,6 @@ public class ControlImagen extends DisplayJAI {
 	 * Permite obtener la información de un segmento de imagen seleccionado
 	 */
 	public String obtenerSeccion() {
-
 		String cadenaImagen = "";
 		try {
 			if (imagen) {
@@ -291,7 +278,6 @@ public class ControlImagen extends DisplayJAI {
 		} catch (Exception ex) {
 			mostrarMensaje("Se presentó un problema al obtener sección");
 		}
-
 		return cadenaImagen;
 	}
 
@@ -381,7 +367,6 @@ public class ControlImagen extends DisplayJAI {
 	 *            imágenes
 	 */
 	private void inicializar(Component padre) {
-
 		this.x1 = 0;
 		this.y1 = 0;
 		this.x2 = 0;
@@ -397,9 +382,7 @@ public class ControlImagen extends DisplayJAI {
 		this.pagina = 1;
 		this.imagen = false;
 		this.padre = padre;
-
 		this.setBackground(Color.LIGHT_GRAY);
-
 		this.addMouseListener(new MouseListener() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -438,7 +421,6 @@ public class ControlImagen extends DisplayJAI {
 			public void mouseMoved(MouseEvent e) {
 			}
 		});
-
 	}
 
 	/**
@@ -450,5 +432,4 @@ public class ControlImagen extends DisplayJAI {
 	private void mostrarMensaje(String string) {
 		JOptionPane.showMessageDialog(padre, string);
 	}
-
 }
