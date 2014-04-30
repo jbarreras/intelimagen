@@ -6,11 +6,11 @@
  * This software is provided "AS IS," without a warranty of any kind.
  */
 
-package intelimagen.servidor;
+package intelimagen.cliente;
 
 /**
  * Interfaz que define la funcionalidad de los servicios necesarios para
- * realizar el reconocimiento de caracteres en imágenes
+ * realizar el reconocimiento de caracteres en imï¿½genes
  * 
  * @author Jorge Barrera
  * @version 1.0 24/03/2014
@@ -24,7 +24,7 @@ public interface ServicioOCRService extends javax.xml.rpc.Service {
 	 * @return Servicio OCR
 	 * @throws javax.xml.rpc.ServiceException
 	 */
-	public intelimagen.servidor.ServicioOCR getServicioOCR()
+	public intelimagen.cliente.ServicioOCR getServicioOCR()
 			throws javax.xml.rpc.ServiceException;
 
 	/**
@@ -35,7 +35,7 @@ public interface ServicioOCRService extends javax.xml.rpc.Service {
 	 * @return Servicio OCR
 	 * @throws javax.xml.rpc.ServiceException
 	 */
-	public intelimagen.servidor.ServicioOCR getServicioOCR(
+	public intelimagen.cliente.ServicioOCR getServicioOCR(
 			java.net.URL portAddress) throws javax.xml.rpc.ServiceException;
 
 	/**

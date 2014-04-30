@@ -1,5 +1,5 @@
 eclipse.preferences.version=1
-encoding//src/intelimagen/servidor/ServicioOCR.java=UTF-8
-encoding//src/intelimagen/servidor/ServicioOCRService.java=UTF-8
-encoding//src/intelimagen/servidor/ServicioOCRServiceLocator.java=UTF-8
-encoding//src/intelimagen/servidor/ServicioOCRSoapBindingStub.java=UTF-8
+encoding//src/intelimagen/cliente/ServicioOCR.java=UTF-8
+encoding//src/intelimagen/cliente/ServicioOCRService.java=UTF-8
+encoding//src/intelimagen/cliente/ServicioOCRServiceLocator.java=UTF-8
+encoding//src/intelimagen/cliente/ServicioOCRSoapBindingStub.java=UTF-8
