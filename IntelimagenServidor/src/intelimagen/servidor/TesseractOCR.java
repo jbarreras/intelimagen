@@ -8,6 +8,7 @@
 package intelimagen.servidor;
 
 import java.io.File;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -33,10 +34,14 @@ public class TesseractOCR implements IOCR {
 		try {
 			File imgTemp = File.createTempFile(tmp.toString(), ".tiff");
 			if (Utilidades.guardarImagenTIFF(imagen, imgTemp)) {
+				Date fechaIni = new Date();
 				if (Utilidades.ejecutarProceso(String.format(ejecutable,
 						imgTemp.getAbsolutePath(), imgTemp.getAbsolutePath()))) {
+					Date fechafin = new Date();
+					long duracion = fechafin.getTime() - fechaIni.getTime();
 					File txtTemp = new File(imgTemp + ".txt");
-					ocrResult = Utilidades.leerArchivoPlano(txtTemp);
+					ocrResult = Utilidades.leerArchivoPlano(txtTemp)
+							+ "\n\n Dur. " + duracion;
 					if (ocrResult.length() > 0) {
 						Utilidades.eliminarArchivo(txtTemp);
 						Utilidades.eliminarArchivo(imgTemp);

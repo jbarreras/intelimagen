@@ -6,17 +6,17 @@
  * This software is provided "AS IS," without a warranty of any kind.
  */
 
-package intelimagen.servidor;
+package intelimagen.cliente;
 
 /**
- * Permite conectar y obtener la información del archivo XML de los servicios de
- * reconocimiento de caracteres en imágenes
+ * Permite conectar y obtener la informaciï¿½n del archivo XML de los servicios de
+ * reconocimiento de caracteres en imï¿½genes
  * 
  * @author Jorge Barrera
  * @version 1.0 17/03/2014
  */
 public class ServicioOCRSoapBindingStub extends org.apache.axis.client.Stub
-		implements intelimagen.servidor.ServicioOCR {
+		implements intelimagen.cliente.ServicioOCR {
 	static org.apache.axis.description.OperationDesc[] _operations;
 	static {
 		_operations = new org.apache.axis.description.OperationDesc[2];
@@ -24,7 +24,7 @@ public class ServicioOCRSoapBindingStub extends org.apache.axis.client.Stub
 	}
 
 	/**
-	 * Obtiene los metodos definidos en el xml que contiene la definición de los
+	 * Obtiene los metodos definidos en el xml que contiene la definiciï¿½n de los
 	 * servicios de OCR
 	 */
 	private static void _initOperationDesc1() {
@@ -105,7 +105,7 @@ public class ServicioOCRSoapBindingStub extends org.apache.axis.client.Stub
 	 * @param endpointURL
 	 *            Ruta del servicio OCR
 	 * @param service
-	 *            Definición del servicio OCR
+	 *            Definiciï¿½n del servicio OCR
 	 * @throws org.apache.axis.AxisFault
 	 */
 	public ServicioOCRSoapBindingStub(java.net.URL endpointURL,
@@ -118,7 +118,7 @@ public class ServicioOCRSoapBindingStub extends org.apache.axis.client.Stub
 	 * Contructor de la clase
 	 * 
 	 * @param service
-	 *            Definición del servicio OCR
+	 *            Definiciï¿½n del servicio OCR
 	 * @throws org.apache.axis.AxisFault
 	 */
 	public ServicioOCRSoapBindingStub(javax.xml.rpc.Service service)
@@ -139,7 +139,7 @@ public class ServicioOCRSoapBindingStub extends org.apache.axis.client.Stub
 	 * @param imagen
 	 *            Cadena de caracteres con bytes de la imagen a reconocer
 	 * @param serial
-	 *            Cadena que contiene la llave para la autorización al servicio
+	 *            Cadena que contiene la llave para la autorizaciï¿½n al servicio
 	 * 
 	 * @return Texto reconocido
 	 */
@@ -187,7 +187,7 @@ public class ServicioOCRSoapBindingStub extends org.apache.axis.client.Stub
 	 * Permite comprobar que el servicio se encuentre activo
 	 * 
 	 * @param serial
-	 *            Cadena que contiene la llave para la autorización al servicio
+	 *            Cadena que contiene la llave para la autorizaciï¿½n al servicio
 	 * 
 	 * @return Servicio en linea
 	 */
@@ -234,7 +234,7 @@ public class ServicioOCRSoapBindingStub extends org.apache.axis.client.Stub
 	/**
 	 * Permite realizar una peticion al servicio OCR
 	 * 
-	 * @return Petición del Cliente
+	 * @return Peticiï¿½n del Cliente
 	 * @throws java.rmi.RemoteException
 	 */
 	@SuppressWarnings("rawtypes")

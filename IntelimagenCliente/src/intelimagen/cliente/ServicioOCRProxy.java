@@ -6,7 +6,7 @@
  * This software is provided "AS IS," without a warranty of any kind.
  */
 
-package intelimagen.servidor;
+package intelimagen.cliente;
 
 /**
  * Clase que permite consumumir la funcionalidad que presta el servicio de OCR
@@ -15,9 +15,9 @@ package intelimagen.servidor;
  * @version 1.0 24/03/2014
  * @updated 29-mar.-2014 6:34:33 p. m.
  */
-public class ServicioOCRProxy implements intelimagen.servidor.ServicioOCR {
+public class ServicioOCRProxy implements intelimagen.cliente.ServicioOCR {
 	private String _endpoint = null;
-	private intelimagen.servidor.ServicioOCR servicioOCR = null;
+	private intelimagen.cliente.ServicioOCR servicioOCR = null;
 
 	/**
 	 * Constructor de la clase
@@ -51,7 +51,7 @@ public class ServicioOCRProxy implements intelimagen.servidor.ServicioOCR {
 	 * 
 	 * @return Servicio OCR
 	 */
-	public intelimagen.servidor.ServicioOCR getServicioOCR() {
+	public intelimagen.cliente.ServicioOCR getServicioOCR() {
 		if (servicioOCR == null)
 			_initServicioOCRProxy();
 		return servicioOCR;
@@ -109,7 +109,7 @@ public class ServicioOCRProxy implements intelimagen.servidor.ServicioOCR {
 	 */
 	private void _initServicioOCRProxy() {
 		try {
-			servicioOCR = (new intelimagen.servidor.ServicioOCRServiceLocator())
+			servicioOCR = (new intelimagen.cliente.ServicioOCRServiceLocator())
 					.getServicioOCR();
 			if (servicioOCR != null) {
 				if (_endpoint != null)

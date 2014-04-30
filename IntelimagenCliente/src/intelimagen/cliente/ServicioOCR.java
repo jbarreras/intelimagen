@@ -6,11 +6,11 @@
  * This software is provided "AS IS," without a warranty of any kind.
  */
 
-package intelimagen.servidor;
+package intelimagen.cliente;
 
 /**
  * Interfaz que define los mecanismos para invocar de manera remota el
- * reconocimiento de caracteres en imágenes
+ * reconocimiento de caracteres en imï¿½genes
  * 
  * @author Jorge Barrera
  * @version 1.0 24/03/2014
@@ -25,7 +25,7 @@ public interface ServicioOCR extends java.rmi.Remote {
 	 * @param imagen
 	 *            Cadena de caracteres con bytes de la imagen a reconocer
 	 * @param serial
-	 *            Cadena que contiene la llave para la autorización al servicio
+	 *            Cadena que contiene la llave para la autorizaciï¿½n al servicio
 	 * 
 	 * @return Texto reconocido
 	 */
@@ -36,7 +36,7 @@ public interface ServicioOCR extends java.rmi.Remote {
 	 * Permite comprobar que el servicio se encuentre activo
 	 * 
 	 * @param serial
-	 *            Cadena que contiene la llave para la autorización al servicio
+	 *            Cadena que contiene la llave para la autorizaciï¿½n al servicio
 	 * 
 	 * @return Servicio en linea
 	 */

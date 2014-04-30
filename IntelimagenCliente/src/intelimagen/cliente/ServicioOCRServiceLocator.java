@@ -5,11 +5,11 @@
  * by the Apache Axis 1.4 Apr 22, 2006 (06:55:48 PDT) WSDL2Java emitter.
  */
 
-package intelimagen.servidor;
+package intelimagen.cliente;
 
 @SuppressWarnings("serial")
 public class ServicioOCRServiceLocator extends org.apache.axis.client.Service
-		implements intelimagen.servidor.ServicioOCRService {
+		implements intelimagen.cliente.ServicioOCRService {
 
 	@SuppressWarnings("rawtypes")
 	private java.util.HashSet ports = null;
@@ -32,7 +32,7 @@ public class ServicioOCRServiceLocator extends org.apache.axis.client.Service
 	 * @param wsdlLoc
 	 *            Ruta del servicio OCR
 	 * @param sName
-	 *            Definición del servicio OCR
+	 *            Definiciï¿½n del servicio OCR
 	 * @throws javax.xml.rpc.ServiceException
 	 */
 	public ServicioOCRServiceLocator(java.lang.String wsdlLoc,
@@ -45,22 +45,22 @@ public class ServicioOCRServiceLocator extends org.apache.axis.client.Service
 	 * Constructor de la clase
 	 * 
 	 * @param config
-	 *            Configuración del servicio OCR
+	 *            Configuraciï¿½n del servicio OCR
 	 */
 	public ServicioOCRServiceLocator(org.apache.axis.EngineConfiguration config) {
 		super(config);
 	}
 
 	/**
-	 * Obtiene la definición del servicio
+	 * Obtiene la definiciï¿½n del servicio
 	 */
 	@SuppressWarnings("rawtypes")
 	public java.rmi.Remote getPort(Class serviceEndpointInterface)
 			throws javax.xml.rpc.ServiceException {
 		try {
-			if (intelimagen.servidor.ServicioOCR.class
+			if (intelimagen.cliente.ServicioOCR.class
 					.isAssignableFrom(serviceEndpointInterface)) {
-				intelimagen.servidor.ServicioOCRSoapBindingStub _stub = new intelimagen.servidor.ServicioOCRSoapBindingStub(
+				intelimagen.cliente.ServicioOCRSoapBindingStub _stub = new intelimagen.cliente.ServicioOCRSoapBindingStub(
 						new java.net.URL(ServicioOCR_address), this);
 				_stub.setPortName(getServicioOCRWSDDServiceName());
 				return _stub;
@@ -75,7 +75,7 @@ public class ServicioOCRServiceLocator extends org.apache.axis.client.Service
 	}
 
 	/**
-	 * Obtiene la definición del servicio
+	 * Obtiene la definiciï¿½n del servicio
 	 * 
 	 * @param portName
 	 *            Definicion del servicio OCR
@@ -98,7 +98,7 @@ public class ServicioOCRServiceLocator extends org.apache.axis.client.Service
 	}
 
 	/**
-	 * Obtiene la definición del servicio
+	 * Obtiene la definiciï¿½n del servicio
 	 * 
 	 * @return Puertos Servicio OCR
 	 */
@@ -113,7 +113,7 @@ public class ServicioOCRServiceLocator extends org.apache.axis.client.Service
 	}
 
 	/**
-	 * Obtiene el nombre de la definición del servicio
+	 * Obtiene el nombre de la definiciï¿½n del servicio
 	 */
 	public javax.xml.namespace.QName getServiceName() {
 		return new javax.xml.namespace.QName("http://servidor.intelimagen",
@@ -126,7 +126,7 @@ public class ServicioOCRServiceLocator extends org.apache.axis.client.Service
 	 * @return Servicio OCR
 	 * @throws javax.xml.rpc.ServiceException
 	 */
-	public intelimagen.servidor.ServicioOCR getServicioOCR()
+	public intelimagen.cliente.ServicioOCR getServicioOCR()
 			throws javax.xml.rpc.ServiceException {
 		java.net.URL endpoint;
 		try {
@@ -146,10 +146,10 @@ public class ServicioOCRServiceLocator extends org.apache.axis.client.Service
 	 * @throws javax.xml.rpc.ServiceException
 	 */
 
-	public intelimagen.servidor.ServicioOCR getServicioOCR(
+	public intelimagen.cliente.ServicioOCR getServicioOCR(
 			java.net.URL portAddress) throws javax.xml.rpc.ServiceException {
 		try {
-			intelimagen.servidor.ServicioOCRSoapBindingStub _stub = new intelimagen.servidor.ServicioOCRSoapBindingStub(
+			intelimagen.cliente.ServicioOCRSoapBindingStub _stub = new intelimagen.cliente.ServicioOCRSoapBindingStub(
 					portAddress, this);
 			_stub.setPortName(getServicioOCRWSDDServiceName());
 			return _stub;

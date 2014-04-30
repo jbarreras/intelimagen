@@ -7,8 +7,6 @@
  */
 package intelimagen.cliente;
 
-import intelimagen.servidor.ServicioOCRProxy;
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -303,6 +301,11 @@ public class VisorImagen extends JApplet {
 				String wsRutaAux = wsRuta;
 				wsRuta = JOptionPane.showInputDialog(null,
 						"Ingrese la ruta del servicio OCR", wsRutaAux);
+
+				if (wsRuta.equalsIgnoreCase("")) {
+					wsRuta = wsRutaAux;
+				}
+
 				wsOCR = new ServicioOCRProxy(wsRuta);
 				try {
 					if (wsOCR.test(tecOCR)) {
