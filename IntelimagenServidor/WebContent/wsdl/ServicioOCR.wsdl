@@ -1,151 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<wsdl:definitions targetNamespace="http://servidor.intelimagen" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://servidor.intelimagen" xmlns:intf="http://servidor.intelimagen" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-<!--WSDL created by Apache Axis version: 1.4
-Built on Apr 22, 2006 (06:55:48 PDT)-->
- <wsdl:types>
-  <schema elementFormDefault="qualified" targetNamespace="http://servidor.intelimagen" xmlns="http://www.w3.org/2001/XMLSchema">
-   <element name="test">
-    <complexType>
-     <sequence>
-      <element name="serial" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="testResponse">
-    <complexType>
-     <sequence>
-      <element name="testReturn" type="xsd:boolean"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="reconocerImagen">
-    <complexType>
-     <sequence>
-      <element name="imagen" type="xsd:string"/>
-      <element name="serial" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-   <element name="reconocerImagenResponse">
-    <complexType>
-     <sequence>
-      <element name="reconocerImagenReturn" type="xsd:string"/>
-     </sequence>
-    </complexType>
-   </element>
-  </schema>
- </wsdl:types>
-
-   <wsdl:message name="testResponse">
-
-      <wsdl:part element="impl:testResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="testRequest">
-
-      <wsdl:part element="impl:test" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="reconocerImagenResponse">
-
-      <wsdl:part element="impl:reconocerImagenResponse" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:message name="reconocerImagenRequest">
-
-      <wsdl:part element="impl:reconocerImagen" name="parameters">
-
-      </wsdl:part>
-
-   </wsdl:message>
-
-   <wsdl:portType name="ServicioOCR">
-
-      <wsdl:operation name="test">
-
-         <wsdl:input message="impl:testRequest" name="testRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:testResponse" name="testResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="reconocerImagen">
-
-         <wsdl:input message="impl:reconocerImagenRequest" name="reconocerImagenRequest">
-
-       </wsdl:input>
-
-         <wsdl:output message="impl:reconocerImagenResponse" name="reconocerImagenResponse">
-
-       </wsdl:output>
-
-      </wsdl:operation>
-
-   </wsdl:portType>
-
-   <wsdl:binding name="ServicioOCRSoapBinding" type="impl:ServicioOCR">
-
-      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-
-      <wsdl:operation name="test">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="testRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="testResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-      <wsdl:operation name="reconocerImagen">
-
-         <wsdlsoap:operation soapAction=""/>
-
-         <wsdl:input name="reconocerImagenRequest">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:input>
-
-         <wsdl:output name="reconocerImagenResponse">
-
-            <wsdlsoap:body use="literal"/>
-
-         </wsdl:output>
-
-      </wsdl:operation>
-
-   </wsdl:binding>
-
-   <wsdl:service name="ServicioOCRService">
-
-      <wsdl:port binding="impl:ServicioOCRSoapBinding" name="ServicioOCR">
-
-         <wsdlsoap:address location="http://localhost:8080/IntelimagenServidor/services/ServicioOCR"/>
-
-      </wsdl:port>
-
-   </wsdl:service>
-
+<wsdl:definitions targetNamespace="http://servidor.intelimagen" 	xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://servidor.intelimagen" 	xmlns:intf="http://servidor.intelimagen" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 	xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <!--WSDL created by Apache Axis version: 1.4 Built on Apr 22, 2006 (06:55:48 PDT) -->
+  <wsdl:types>
+    <schema elementFormDefault="qualified" targetNamespace="http://servidor.intelimagen" 	xmlns="http://www.w3.org/2001/XMLSchema">
+      <element name="test">
+        <complexType>
+          <sequence>
+            <element name="serial" type="xsd:string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="testResponse">
+        <complexType>
+          <sequence>
+            <element name="testReturn" type="xsd:boolean" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="reconocerImagen">
+        <complexType>
+          <sequence>
+            <element name="imagen" type="xsd:string" />
+            <element name="serial" type="xsd:string" />
+          </sequence>
+        </complexType>
+      </element>
+      <element name="reconocerImagenResponse">
+        <complexType>
+          <sequence>
+            <element name="reconocerImagenReturn" type="xsd:string" />
+          </sequence>
+        </complexType>
+      </element>
+    </schema>
+  </wsdl:types>
+  <wsdl:message name="testResponse">
+    <wsdl:part element="impl:testResponse" name="parameters"> </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="testRequest">
+    <wsdl:part element="impl:test" name="parameters"> </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="reconocerImagenResponse">
+    <wsdl:part element="impl:reconocerImagenResponse" name="parameters"> </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="reconocerImagenRequest">
+    <wsdl:part element="impl:reconocerImagen" name="parameters"> </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ServicioOCR">
+    <wsdl:operation name="test">
+      <wsdl:input message="impl:testRequest" name="testRequest"> </wsdl:input>
+      <wsdl:output message="impl:testResponse" name="testResponse"> </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="reconocerImagen">
+      <wsdl:input message="impl:reconocerImagenRequest" name="reconocerImagenRequest"> </wsdl:input>
+      <wsdl:output message="impl:reconocerImagenResponse" name="reconocerImagenResponse"> </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServicioOCRSoapBinding" type="impl:ServicioOCR">
+    <wsdlsoap:binding style="document" 	transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="test">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="testRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="testResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="reconocerImagen">
+      <wsdlsoap:operation soapAction="" />
+      <wsdl:input name="reconocerImagenRequest">
+        <wsdlsoap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="reconocerImagenResponse">
+        <wsdlsoap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicioOCRService">
+    <wsdl:port binding="impl:ServicioOCRSoapBinding" name="ServicioOCR">
+      <wsdlsoap:address location="http://localhost:8080/IntelimagenServidor/services/ServicioOCR" />
+    </wsdl:port>
+  </wsdl:service>
 </wsdl:definitions>

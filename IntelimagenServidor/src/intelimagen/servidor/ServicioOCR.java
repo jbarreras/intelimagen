@@ -16,6 +16,9 @@ package intelimagen.servidor;
  * @updated 29-mar.-2014 6:03:53 p. m.
  */
 public class ServicioOCR {
+
+	private OCR OCR = null;
+
 	/**
 	 * Implementa el reconocimiento de caracteres de una imagen obteniendo el
 	 * texto reconocible
@@ -29,16 +32,9 @@ public class ServicioOCR {
 	 * @return Texto reconocido
 	 */
 	public String reconocerImagen(String imagen, String serial) {
-		IOCR OCR = null;
-		switch (serial) {
-		case "TESSERACT":
-			OCR = new TesseractOCR();
-			break;
-		case "GOCR":
-			OCR = new GocrOCR();
-			break;
-		}
-		return Utilidades.CadenaBase64(OCR.reconocerImagen(imagen));
+
+		this.OCR = intelimagen.servidor.OCR.fabrica(serial);
+		return Utilidades.cadenaBase64(OCR.reconocerImagen(imagen));
 	}
 
 	/**

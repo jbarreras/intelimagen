@@ -156,7 +156,7 @@ public class Utilidades {
 	 * @param cadena
 	 * @return Cadena codificada
 	 */
-	public static String CadenaBase64(String cadena) {
+	public static String cadenaBase64(String cadena) {
 		return Base64.encode(cadena.getBytes());
 	}
 }
