@@ -19,7 +19,7 @@ import java.util.UUID;
  * @version 1.0 17/03/2014
  * @updated 29-mar.-2014 6:03:53 p. m.
  */
-public class TesseractOCR implements IOCR {
+public class TesseractOCR extends OCR {
 	private final String ejecutable = "C:\\Program Files (x86)\\Tesseract-OCR\\tesseract.exe %s %s -l spa";
 
 	/*
@@ -43,8 +43,8 @@ public class TesseractOCR implements IOCR {
 					ocrResult = Utilidades.leerArchivoPlano(txtTemp)
 							+ "\n\n Dur. " + duracion;
 					if (ocrResult.length() > 0) {
-						Utilidades.eliminarArchivo(txtTemp);
-						Utilidades.eliminarArchivo(imgTemp);
+						// Utilidades.eliminarArchivo(txtTemp);
+						// Utilidades.eliminarArchivo(imgTemp);
 					} else {
 						ocrResult = "Servidor: No hay resultados del proceso "
 								+ ejecutable;

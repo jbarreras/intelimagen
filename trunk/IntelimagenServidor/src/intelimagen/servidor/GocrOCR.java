@@ -20,7 +20,7 @@ import java.util.UUID;
  * @version 1.0 17/03/2014
  * @updated 29-mar.-2014 6:03:53 p. m.
  */
-public class GocrOCR implements IOCR {
+public class GocrOCR extends OCR {
 
 	private final String ejecutable = "C:\\Program Files (x86)\\GOCR\\gocr.exe -i %s -o %s -u \"*\" -a 70 -f \"UTF8\"";
 
