@@ -63,7 +63,7 @@ public class VisorImagen extends JApplet {
 	 */
 	public VisorImagen() {
 		this.getContentPane().setLayout(new BorderLayout(0, 0));
-		// this.setSize(800, 600);
+		this.setSize(1024, 768);
 		wsOCR = new ServicioOCRProxy(wsRuta);
 		ctrlImg = new ControlImagen(this);
 		JToolBar mnuEncabezado = new JToolBar();
